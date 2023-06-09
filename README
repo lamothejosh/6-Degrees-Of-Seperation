@@ -1,0 +1,161 @@
+(A) The title of the homework and the author’s name 
+
+     6degrees of Collaboration by Josh Lamothe 
+     8/16/2022
+
+(B) The purpose of the program.
+
+     The purpose of this program is to create a graph of artist
+     and be able to observe how they collaborate through music.
+     This is done through breadth first and depth first searches on the graph
+
+(C) Acknowledgements for any help you received.
+
+     I recieved help from Professor Sheldon and his video lectures
+    I also recieved help from Professor Allen 
+     I had help from all the TAs and David (the ACE++ instructor)
+
+Compile/run:
+     - Compile using
+            make 
+     - run executable with
+            ./SixDegrees artistFile [commands] [output]
+
+Files: 
+
+main.cpp:
+     this is the driver file that creates a 6degrees instance and also runs 
+      the program 
+
+6degrees.cpp:
+     Implementation of 6 degrees class.  Main
+     functionality of running the  Simulation,
+     provides the query loop and the searching of artist
+
+Sixdegrees.h:
+     Interface of 6degrees class.
+
+Artist.cpp:
+     implementation of the Artist struct 
+
+Artist.h:
+     interface of the Artist struct 
+
+CollabGraph.cpp:
+     implementation of the CollabGraph class
+
+CollabGraph.h:
+     interface of the CollabGraph class
+
+Makefile:
+     Compiles and links all necessary files for 6Degrees
+
+
+
+Data Structures:
+  three data structures were used in this program
+  one was a vector which helded each artist struct
+  this was done in order to be able to store all artist and access each 
+
+  another data structure used was a graph
+  a graph is a combination of Vertex and Edges 
+  edges are just links between one vertex to another 
+  this graph was undirected and unweighted 
+  this means that edges are symetrical for vertex and edges do not 
+  have a numerical value attached
+  This is what the collabgraph graph was based on 
+  in our program the edges were songs that artist worked on together
+  vertex were the artist themselves
+
+  a final data struct used was an unordered map 
+  this map allowed for us to find an artist in the graph by using their name 
+  this was useful as it allowed for an artist to be found just by searching 
+  their name. This was done in O(1) time complexity which makes it very
+  efficient
+
+  2 search algorithms were done
+  A breadth first and a depth first search
+  the breadth first would return the shortest path 
+  breadth first explores the neighbors of the artist before exploring the source
+  DFS searches seach the source first and then explores the neighbors as much
+  as they can before they have to go back
+
+Testing:
+
+overall just comparing what the reference had to what mine was doing by 
+inputting the same commands was a very effective way to test my code
+
+Below are two test I made to see if the artist were being read into the program correctly
+this test printed each artist in order along wiht all of thier songs so that we can see the testing
+
+one main thing done to test was making my own artist file and testing with that
+I drew out the graph i made and made sure the program was following it appropriatly 
+
+Uzi
+Shoota
+Wokeuplikethis
+Marvelous Day
+Wanted You 
+Wasted
+Life Goes on
+Watch
+*
+Carti
+Shoota
+Wokeuplikethis
+*
+Nav
+Wanted You 
+Champion
+*
+Travis Scott
+Watch
+Champion
+SICKO MODE
+No bystanders
+*
+Drake
+SICKO MODE
+*
+Juice
+No bystanders
+Wasted
+*
+
+   reader_test();   
+    artist_graph.print_graph(cout);
+    vector<Artist> test = artist_graph.get_vertex_neighbors(artist_collection[3]);
+    for (int i = 0; i < test.size(); i++)
+    {
+        cout << test[i].get_name() << endl;
+    }
+
+
+    void sixdegrees::reader_test()
+{
+    for (size_t i = 0; i < artist_collection.size(); i++)
+    {
+        cout << artist_collection[i].get_name() << endl;
+        artist_collection[i].disco_print();
+        cout << endl;
+    }
+}
+
+Timing:
+
+This project probably took me around 40 hours total.
+
+Honesty I had the most difficulty with using the autograder.
+ It wasn't very friendly to someone learning how to improve their code. 
+ It was very hard to understand what was going wrong with my code
+and what test I was failing.
+
+autograder test like "dfs stress" are not very specific on what is 
+wrong with your code
+
+a lot of time I was under the assumption that something wasn't working properly
+when in fact i was simply missing a "***" and not getting proper 
+feedback on that causes me to fix something that was already working and 
+break the code I had that already worked. this causes me to further
+increase the time i spent debugging this project.
+   
